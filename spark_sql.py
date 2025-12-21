@@ -16,7 +16,7 @@ custom_schema = StructType([
 sc = SparkContext(appName="AverageIncomePerDistrictSQL")
 sqlContext = SQLContext(sc)
 
-file_path = "/user/cloudera/income.txt" 
+file_path = "/user/cloudera/myIncome.txt" 
 input_rdd = sc.textFile(file_path)
 
 def parse_line(line):
@@ -42,5 +42,6 @@ result = sqlContext.sql("""
 """)
 print("--- Result from Spark SQL Query ---")
 result.show() 
+
 
 sc.stop()
