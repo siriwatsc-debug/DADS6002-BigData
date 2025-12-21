@@ -5,7 +5,7 @@ from pyspark import SparkContext
 
 sc = SparkContext(appName='AverageIncomePerDistrict')
 #change input path as needed
-input_file = sc.textFile('/user/cloudera/income.txt')
+input_file = sc.textFile('/user/cloudera/myIncome.txt')
 
 
 def parse_line(line):
@@ -35,7 +35,8 @@ def calculate_average(total_count_tuple):
 average_income_rdd = total_income_and_count.mapValues(calculate_average)
 
 #change output path as needed
-average_income_rdd.saveAsTextFile('/user/cloudera/spd01')
+average_income_rdd.saveAsTextFile('/user/cloudera/spark')
+
 
 
 sc.stop()
